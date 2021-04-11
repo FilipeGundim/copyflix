@@ -3,6 +3,7 @@ import Modal from "@material-ui/core/Modal";
 
 export const ModalPaper = styled(Modal)`
   margin-top: 5vh;
+  max-height: 50%;
 `;
 
 export const MovieTitle = styled.div`
@@ -31,6 +32,7 @@ export const MovieBonus = styled.div`
 `;
 
 export const Img = styled.img`
+  height: 300px;
   width: 100%;
   opacity: 0.4;
 `;
