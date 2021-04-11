@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import NavBar from "../../Components/Navbar";
-import CategoriesBar from "../Categories";
+import CategoriesBar from "../Sidebar";
 import { AppContainer } from "../../styled";
 
 interface IProps {

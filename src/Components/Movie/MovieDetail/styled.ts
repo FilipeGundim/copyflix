@@ -2,12 +2,13 @@ import styled from "styled-components";
 import Modal from "@material-ui/core/Modal";
 
 export const ModalPaper = styled(Modal)`
-  margin-top: 5vh;
   max-height: 50%;
+  margin: 1rem;
+  margin-top: 5vh;
 `;
 
 export const MovieTitle = styled.div`
-  position: fixed;
+  position: absolute;
   top: 15vh;
   margin-left: 1rem;
 `;
@@ -23,6 +24,10 @@ export const MovieContainer = styled.div`
   font-weight: bold;
   font-size: 3vh;
   background-color: black;
+
+  .MuiSvgIcon-root {
+    float: right;
+  }
 `;
 
 export const MovieBonus = styled.div`

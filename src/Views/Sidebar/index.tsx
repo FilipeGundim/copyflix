@@ -8,7 +8,7 @@ interface IProps {
   toggleDrawer: () => void;
 }
 
-const CategoriesBar = ({ open, toggleDrawer }: IProps) => {
+const Sidebar = ({ open, toggleDrawer }: IProps) => {
   const { data: categories } = useApi<ICategorieRes>({
     _url: categorieListUrl,
   });
@@ -18,7 +18,11 @@ const CategoriesBar = ({ open, toggleDrawer }: IProps) => {
       <HomeLink to="/home">Home</HomeLink>
       <HorizontalLine />
       {categories?.genres.map(({ name, id }) => (
-        <Categorie to={`/categories/${id}?title=${name}`} key={id}>
+        <Categorie
+          to={`/categories/${id}?title=${name}`}
+          key={id}
+          onClick={toggleDrawer}
+        >
           {name}
         </Categorie>
       ))}
@@ -26,4 +30,4 @@ const CategoriesBar = ({ open, toggleDrawer }: IProps) => {
   );
 };
 
-export default CategoriesBar;
+export default Sidebar;

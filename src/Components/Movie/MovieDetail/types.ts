@@ -1,4 +1,4 @@
-import { ICategorie } from "../../../Views/Categories/types";
+import { ICategorie } from "../../../Views/Sidebar/types";
 
 interface ICompany {
   id: number;

@@ -1,6 +1,7 @@
 import React from "react";
 import useApi from "../../../Api/fetchData";
 import { IMovieDetailRes } from "./types";
+import CloseIcon from "@material-ui/icons/Close";
 import {
   MovieBonus,
   MovieContainer,
@@ -30,6 +31,7 @@ const MovieDetail: React.FC<IProps> = ({ open, onClose, id }) => {
   return (
     <ModalPaper open={open} onClose={onClose}>
       <MovieContainer>
+        <CloseIcon onClick={onClose} />
         <Img src={imageBaseUrl + movie?.backdrop_path!} alt="" />
         <MovieTitle>{movie?.title}</MovieTitle>
         <MovieBonus>
