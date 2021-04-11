@@ -9,7 +9,7 @@ interface IProps {
 
 export default function MovieCard({ image, onClick }: IProps) {
   return (
-    <Container item onClick={onClick}>
+    <Container item onClick={onClick} data-testid="MovieCard">
       <MovieImg src={imageBaseUrl + image} loading="lazy" width="100px" />
     </Container>
   );

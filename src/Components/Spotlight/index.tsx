@@ -1,5 +1,5 @@
 import React from "react";
-import useApi from "../../Api/fetchData";
+import useApi from "../../Api/apiHook";
 import { movieUrl } from "../../Api/urls";
 import { imageBaseUrl } from "../../Api/utils";
 import { SpotlightContainer, Title, Overview } from "./styles";

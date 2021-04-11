@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import MovieCard from "../Movie/MovieCard";
 import { ISpotlightRes } from "../Spotlight/types";
 import { movieUrl } from "../../Api/urls";
-import useApi from "../../Api/fetchData";
+import useApi from "../../Api/apiHook";
 import React, { useState, useCallback } from "react";
 import { ContainerTitle } from "./styles";
 import MovieDetail from "../Movie/MovieDetail";
