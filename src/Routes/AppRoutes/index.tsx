@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { Container } from "../../styled";
-import AppRouteContainer from "../../Views/App/App";
+import AppRouteContainer from "../../Views/AppContainer/App";
 
 const AppRoutes = (props: any) => {
   const { component: Component, ...rest } = props;

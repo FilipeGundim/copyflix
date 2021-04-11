@@ -1,5 +1,5 @@
 import Routes from "./Routes";
 
-export default function () {
+export default function App() {
   return <Routes />;
 }
