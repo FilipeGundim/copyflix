@@ -29,6 +29,8 @@ export default function useApi<TData extends unknown>({
       console.log("error fetching resource");
       setIsError(true);
     }
+
+    return () => setData(undefined);
   }, [_url, dep, filters]);
 
   return { data, isError };

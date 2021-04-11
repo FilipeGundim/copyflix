@@ -2,12 +2,12 @@ import styled from "styled-components";
 import Modal from "@material-ui/core/Modal";
 
 export const ModalPaper = styled(Modal)`
-  margin-top: 15vh;
+  margin-top: 5vh;
 `;
 
 export const MovieTitle = styled.div`
   position: fixed;
-  top: 30vh;
+  top: 15vh;
   margin-left: 1rem;
 `;
 
