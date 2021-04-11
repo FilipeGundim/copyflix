@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Grid } from "@material-ui/core";
 
 export const ContainerTitle = styled.div`
   color: #ffffff;
@@ -9,4 +10,8 @@ export const ContainerTitle = styled.div`
   justify-content: center;
   font-size: 3vh;
   font-weight: bold;
+`;
+
+export const Container = styled(Grid)`
+  min-height: 100vh;
 `;

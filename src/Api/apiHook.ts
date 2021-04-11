@@ -15,15 +15,21 @@ export default function useApi<TData extends unknown>({
 }: IApiParams) {
   const [data, setData] = useState<TData>();
   const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    if (!_url) {
+      return;
+    }
     let url = `${baseUrl}/${_url}?api_key=${API_KEY}`;
     if (filters) {
       url += filters;
     }
     try {
+      setIsLoading(true);
       axios.get(url).then(({ data }) => {
         setData(data);
+        setIsLoading(false);
       });
     } catch (error) {
       console.log("error fetching resource");
@@ -33,5 +39,5 @@ export default function useApi<TData extends unknown>({
     return () => setData(undefined);
   }, [_url, dep, filters]);
 
-  return { data, isError };
+  return { data, isError, isLoading };
 }

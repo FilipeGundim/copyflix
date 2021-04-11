@@ -1,6 +1,7 @@
 import React from "react";
 import useApi from "../../../Api/apiHook";
 import { IMovieDetailRes } from "./types";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import CloseIcon from "@material-ui/icons/Close";
 import {
   MovieBonus,
@@ -19,7 +20,7 @@ interface IProps {
 }
 
 const MovieDetail: React.FC<IProps> = ({ open, onClose, id }) => {
-  const { data: movie } = useApi<IMovieDetailRes>({
+  const { data: movie, isLoading } = useApi<IMovieDetailRes>({
     _url: `movie/${id}`,
     dep: id,
   });
@@ -31,17 +32,25 @@ const MovieDetail: React.FC<IProps> = ({ open, onClose, id }) => {
   return (
     <ModalPaper open={open} onClose={onClose}>
       <MovieContainer>
-        <CloseIcon onClick={onClose} />
-        <Img imagem={imageBaseUrl + movie?.backdrop_path!}>
-          <MovieTitle>{movie?.title}</MovieTitle>
-        </Img>
-        <MovieBonus data-testid="MovieBonus">
-          Release date: {formatedDate}&nbsp;
-          <br />
-          Vote average: {movie?.vote_average}
-          <span data-testid="MovieBonusAdult">{movie?.adult && " +18"}</span>
-        </MovieBonus>
-        <MovieOverview>{movie?.overview}</MovieOverview>
+        {isLoading ? (
+          <CircularProgress color="secondary" />
+        ) : (
+          <div>
+            <CloseIcon onClick={onClose} />
+            <Img imagem={imageBaseUrl + movie?.backdrop_path!}>
+              <MovieTitle>{movie?.title}</MovieTitle>
+            </Img>
+            <MovieBonus data-testid="MovieBonus">
+              Release date: {formatedDate}&nbsp;
+              <br />
+              Vote average: {movie?.vote_average}
+              <span data-testid="MovieBonusAdult">
+                {movie?.adult && " +18"}
+              </span>
+            </MovieBonus>
+            <MovieOverview>{movie?.overview}</MovieOverview>
+          </div>
+        )}
       </MovieContainer>
     </ModalPaper>
   );

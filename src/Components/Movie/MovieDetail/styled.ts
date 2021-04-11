@@ -18,6 +18,7 @@ export const MovieTitle = styled.div`
 
 export const MovieOverview = styled.div`
   margin: 1rem;
+  max-height: 30vh;
 `;
 
 export const MovieContainer = styled.div`
@@ -29,6 +30,10 @@ export const MovieContainer = styled.div`
   font-weight: bold;
   font-size: 3vh;
   background-color: black;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .MuiSvgIcon-root {
     float: right;
