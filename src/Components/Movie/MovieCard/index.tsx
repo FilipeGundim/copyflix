@@ -4,11 +4,12 @@ import { Container, MovieImg } from "./styles";
 
 interface IProps {
   image: string;
+  onClick: () => void;
 }
 
-export default function MovieCard({ image }: IProps) {
+export default function MovieCard({ image, onClick }: IProps) {
   return (
-    <Container item>
+    <Container item onClick={onClick}>
       <MovieImg src={imageBaseUrl + image} loading="lazy" width="100px" />
     </Container>
   );
