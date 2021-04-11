@@ -27,6 +27,7 @@ export const MovieContainer = styled.div`
 export const MovieBonus = styled.div`
   margin: 1rem;
   font-size: 2.2vh;
+  color: greenyellow;
 `;
 
 export const Img = styled.img`
