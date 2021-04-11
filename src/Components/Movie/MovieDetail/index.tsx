@@ -21,7 +21,7 @@ interface IProps {
 
 const MovieDetail: React.FC<IProps> = ({ open, onClose, id }) => {
   const { data: movie, isLoading } = useApi<IMovieDetailRes>({
-    _url: `movie/${id}`,
+    _url: id ? `movie/${id}` : undefined,
     dep: id,
   });
 
@@ -33,7 +33,7 @@ const MovieDetail: React.FC<IProps> = ({ open, onClose, id }) => {
     <ModalPaper open={open} onClose={onClose}>
       <MovieContainer>
         {isLoading ? (
-          <CircularProgress color="secondary" />
+          <CircularProgress color="secondary" data-testid="loadingCircle" />
         ) : (
           <div>
             <CloseIcon onClick={onClose} />

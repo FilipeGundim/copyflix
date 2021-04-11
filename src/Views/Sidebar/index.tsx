@@ -15,7 +15,12 @@ const Sidebar = ({ open, toggleDrawer }: IProps) => {
   });
 
   return (
-    <LeftDrawer anchor="left" open={open} onClose={toggleDrawer}>
+    <LeftDrawer
+      anchor="left"
+      open={open}
+      onClose={toggleDrawer}
+      data-testid="Sidebar"
+    >
       <HomeLink to="/home">Home</HomeLink>
       <HorizontalLine />
 

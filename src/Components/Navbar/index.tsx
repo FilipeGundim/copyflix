@@ -9,7 +9,11 @@ interface NavBarProps {
 const NavBar = ({ handleDrawer }: NavBarProps) => {
   return (
     <NavBarContainer container justify="space-between" alignItems="center">
-      <MenuIcon onClick={handleDrawer} htmlColor="#ffffff" />
+      <MenuIcon
+        onClick={handleDrawer}
+        htmlColor="#ffffff"
+        data-testid="NavBarMenu"
+      />
     </NavBarContainer>
   );
 };

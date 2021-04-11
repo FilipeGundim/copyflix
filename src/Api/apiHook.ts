@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { API_KEY, baseUrl } from "./utils";
 
 interface IApiParams {
-  _url: string;
+  _url?: string;
   filters?: string;
   dep?: string | number | Object;
 }
