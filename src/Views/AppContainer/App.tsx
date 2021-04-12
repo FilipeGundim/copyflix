@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import NavBar from "../../Components/Navbar";
-import CategoriesBar from "../Sidebar";
+import Sidebar from "../Sidebar";
 import { AppContainer } from "../../styled";
 
 interface IProps {
@@ -19,7 +19,7 @@ function AppRouteContainer({ children }: IProps) {
   return (
     <AppContainer>
       <NavBar handleDrawer={handleDrawer} />
-      <CategoriesBar open={openDrawer} toggleDrawer={closeDrawer} />
+      <Sidebar open={openDrawer} toggleDrawer={closeDrawer} />
       {children}
     </AppContainer>
   );

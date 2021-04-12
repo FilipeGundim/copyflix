@@ -6,3 +6,7 @@ export default {
   title: "Categorie",
   component: Categorie,
 };
+
+const Template = () => <Categorie />;
+
+export const CategorieStorie = Template.bind({});
