@@ -1,7 +1,7 @@
 import React from "react";
 import useApi from "../../Api/apiHook";
 import { movieUrl } from "../../Api/urls";
-import { imageBaseUrl } from "../../Api/utils";
+import { imageBaseUrl } from "../../Api/urls";
 import { SpotlightContainer, Title, Overview } from "./styles";
 import { ISpotlightRes } from "./types";
 

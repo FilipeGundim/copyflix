@@ -1,5 +1,5 @@
 import React from "react";
-import { imageBaseUrl } from "../../../Api/utils";
+import { imageBaseUrl } from "../../../Api/urls";
 import { Container, MovieImg } from "./styles";
 
 interface IProps {

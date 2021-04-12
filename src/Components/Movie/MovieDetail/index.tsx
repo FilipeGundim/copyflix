@@ -11,7 +11,7 @@ import {
   ModalPaper,
   Img,
 } from "./styled";
-import { imageBaseUrl } from "../../../Api/utils";
+import { imageBaseUrl } from "../../../Api/urls";
 
 interface IProps {
   open: boolean;

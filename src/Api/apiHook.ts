@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { API_KEY, baseUrl } from "./utils";
+import { baseUrl } from "./urls";
+import { API_KEY } from "./utils";
 
 interface IApiParams {
   _url?: string;
@@ -33,6 +34,7 @@ export default function useApi<TData extends unknown>({
       });
     } catch (error) {
       console.log("error fetching resource");
+      setIsLoading(false);
       setIsError(true);
     }
 
