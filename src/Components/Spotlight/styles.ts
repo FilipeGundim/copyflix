@@ -12,9 +12,9 @@ export const SpotlightContainer = styled.div<IProps>`
   background-repeat: no-repeat;
   background-image: radial-gradient(
       circle,
-      rgba(121, 29, 9, 0.5) 0%,
-      rgba(2, 0, 36, 1) 100%,
-      rgba(0, 212, 255, 1) 100%
+      rgba(20, 20, 20, 0.7) 0%,
+      rgb(20, 20, 20) 100%,
+      rgba(20, 20, 20, 1) 100%
     ),
     ${(props) => `url(${props.image})`};
 `;
