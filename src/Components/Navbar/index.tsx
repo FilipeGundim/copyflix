@@ -8,11 +8,7 @@ interface NavBarProps {
 
 const NavBar = ({ handleDrawer }: NavBarProps) => {
   return (
-    <NavBarContainer
-      container
-      justifyContent="space-between"
-      alignItems="center"
-    >
+    <NavBarContainer container justify="space-between" alignItems="center">
       <MenuIcon
         onClick={handleDrawer}
         htmlColor="#ffffff"
