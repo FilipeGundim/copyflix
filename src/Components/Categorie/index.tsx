@@ -41,14 +41,14 @@ function Categorie() {
 
   if (isFetching) {
     return (
-      <Container container justifyContent="center" alignItems="center">
+      <Container container justify="center" alignItems="center">
         <CircularProgress color="secondary" />
       </Container>
     );
   }
 
   return (
-    <Container container justifyContent="center" alignItems="center">
+    <Container container justify="center" alignItems="center">
       <ContainerTitle>{title}</ContainerTitle>
       {categorieList?.results?.map(renderMovie)}
       <MovieDetail id={movie} onClose={onClose} open={Boolean(movie)} />
