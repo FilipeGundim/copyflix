@@ -10,11 +10,11 @@ interface IProps {
 function AppRouteContainer({ children }: IProps) {
   const [openDrawer, setOpenDrawer] = useState(false);
 
-  const closeDrawer = useCallback(() => setOpenDrawer(false), []);
+  const handleDrawer = useCallback(() => {
+    setOpenDrawer((prevState) => !prevState);
+  }, []);
 
-  const handleDrawer = useCallback(() => setOpenDrawer(!openDrawer), [
-    openDrawer,
-  ]);
+  const closeDrawer = useCallback(() => setOpenDrawer(false), []);
 
   return (
     <AppContainer>

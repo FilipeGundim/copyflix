@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { imageBaseUrl } from "../../../Api/urls";
 import { Container, MovieImg } from "./styles";
 
@@ -7,10 +7,12 @@ interface IProps {
   onClick: () => void;
 }
 
-export default function MovieCard({ image, onClick }: IProps) {
+function MovieCard({ image, onClick }: IProps) {
   return (
     <Container item onClick={onClick} data-testid="MovieCard">
       <MovieImg src={imageBaseUrl + image} loading="lazy" width="100px" />
     </Container>
   );
 }
+
+export default memo(MovieCard);

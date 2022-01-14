@@ -1,6 +1,6 @@
 import MenuIcon from "@material-ui/icons/Menu";
 import { NavBarContainer } from "./styled";
-import React from "react";
+import React, { memo } from "react";
 
 interface NavBarProps {
   handleDrawer: () => void;
@@ -8,7 +8,11 @@ interface NavBarProps {
 
 const NavBar = ({ handleDrawer }: NavBarProps) => {
   return (
-    <NavBarContainer container justify="space-between" alignItems="center">
+    <NavBarContainer
+      container
+      justifyContent="space-between"
+      alignItems="center"
+    >
       <MenuIcon
         onClick={handleDrawer}
         htmlColor="#ffffff"
@@ -18,4 +22,4 @@ const NavBar = ({ handleDrawer }: NavBarProps) => {
   );
 };
 
-export default NavBar;
+export default memo(NavBar);

@@ -1,12 +1,17 @@
-import React from "react";
-import useApi from "../../Api/apiHook";
+import React, { memo } from "react";
+import { useQuery } from "react-query";
+import { getData } from "../../Api";
 import { movieUrl } from "../../Api/urls";
 import { imageBaseUrl } from "../../Api/urls";
 import { SpotlightContainer, Title, Overview } from "./styles";
 import { ISpotlightRes } from "./types";
 
-const Spotlight = () => {
-  const { data } = useApi<ISpotlightRes>({ _url: movieUrl });
+const SPOTLIGHT_QUERY_KEY = "spotlight";
+
+function Spotlight() {
+  const { data } = useQuery<ISpotlightRes>(SPOTLIGHT_QUERY_KEY, () =>
+    getData(movieUrl)
+  );
 
   const spotlight = data?.results[Math.floor(Math.random() * 5)];
 
@@ -18,6 +23,6 @@ const Spotlight = () => {
       <Overview>{spotlight?.overview}</Overview>
     </SpotlightContainer>
   );
-};
+}
 
-export default Spotlight;
+export default memo(Spotlight);

@@ -3,61 +3,55 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import MovieCard from "../Movie/MovieCard";
 import { ISpotlightRes } from "../Spotlight/types";
 import { movieUrl } from "../../Api/urls";
-import useApi from "../../Api/apiHook";
+import { getData } from "../../Api";
 import React, { useState, useCallback } from "react";
 import { ContainerTitle, Container } from "./styles";
 import MovieDetail from "../Movie/MovieDetail";
+import { useQuery } from "react-query";
 
 interface Params {
   id: string;
 }
 
+const MOVIE_CATEGORIE_QUERY_KEY = "movies";
+
 function Categorie() {
   const [movie, setMovie] = useState<number>();
-  const [openDetail, setOpenDetail] = useState(false);
 
   const { id } = useParams<Params>();
-
-  const filters = `&with_genres=${id}`;
-
-  const { data: categorieList, isLoading } = useApi<ISpotlightRes>({
-    _url: movieUrl,
-    filters,
-    dep: id,
-  });
 
   const { search } = useLocation();
   const query = new URLSearchParams(search);
   const title = query.get("title") as string | undefined;
 
-  const handleClick = useCallback((movieId) => {
-    setMovie(movieId);
-    setOpenDetail(true);
+  const filter = `&with_genres=${id}`;
+
+  const { data: categorieList, isFetching } = useQuery<ISpotlightRes>(
+    [MOVIE_CATEGORIE_QUERY_KEY, id, title],
+    () => getData(`${movieUrl}`, filter),
+    { retry: false, enabled: Boolean(id) }
+  );
+
+  const onClose = useCallback(() => setMovie(undefined), []);
+
+  const renderMovie = useCallback(({ poster_path, id }) => {
+    const onMovieClick = () => setMovie(id);
+    return <MovieCard key={id} image={poster_path} onClick={onMovieClick} />;
   }, []);
 
-  const onClose = useCallback(() => setOpenDetail(false), []);
+  if (isFetching) {
+    return (
+      <Container container justifyContent="center" alignItems="center">
+        <CircularProgress color="secondary" />
+      </Container>
+    );
+  }
 
   return (
-    <Container container justify="center" alignItems="center">
-      {isLoading ? (
-        <CircularProgress color="secondary" />
-      ) : (
-        <>
-          <ContainerTitle>{title}</ContainerTitle>
-          {categorieList?.results?.map(({ poster_path, id }) => {
-            const onMovieClick = () => handleClick(id);
-
-            return (
-              <MovieCard key={id} image={poster_path} onClick={onMovieClick} />
-            );
-          })}
-        </>
-      )}
-      <MovieDetail
-        id={movie}
-        onClose={onClose}
-        open={Boolean(openDetail && movie)}
-      />
+    <Container container justifyContent="center" alignItems="center">
+      <ContainerTitle>{title}</ContainerTitle>
+      {categorieList?.results?.map(renderMovie)}
+      <MovieDetail id={movie} onClose={onClose} open={Boolean(movie)} />
     </Container>
   );
 }

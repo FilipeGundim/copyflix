@@ -1,5 +1,5 @@
 import React from "react";
-import useApi from "../../../Api/apiHook";
+import { getData } from "../../../Api";
 import { IMovieDetailRes } from "./types";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import CloseIcon from "@material-ui/icons/Close";
@@ -12,6 +12,7 @@ import {
   Img,
 } from "./styled";
 import { imageBaseUrl } from "../../../Api/urls";
+import { useQuery } from "react-query";
 
 interface IProps {
   open: boolean;
@@ -19,11 +20,16 @@ interface IProps {
   id?: number;
 }
 
+const MOVIE_QUERY_KEY = "movie";
+
 const MovieDetail: React.FC<IProps> = ({ open, onClose, id }) => {
-  const { data: movie, isLoading } = useApi<IMovieDetailRes>({
-    _url: id ? `movie/${id}` : undefined,
-    dep: id,
-  });
+  const { data: movie, isLoading } = useQuery<IMovieDetailRes>(
+    MOVIE_QUERY_KEY,
+    () => getData(`movie/${id}`),
+    {
+      enabled: Boolean(id),
+    }
+  );
 
   const formatedDate =
     movie?.release_date &&
