@@ -7,11 +7,10 @@ import { SpotlightContainer, Title, Overview } from "./styles";
 import { ISpotlightRes } from "./types";
 
 const SPOTLIGHT_QUERY_KEY = "spotlight";
+const fetchMovie = () => getData(movieUrl);
 
 function Spotlight() {
-  const { data } = useQuery<ISpotlightRes>(SPOTLIGHT_QUERY_KEY, () =>
-    getData(movieUrl)
-  );
+  const { data } = useQuery<ISpotlightRes>(SPOTLIGHT_QUERY_KEY, fetchMovie);
 
   const spotlight = data?.results[Math.floor(Math.random() * 5)];
 

@@ -22,8 +22,8 @@ interface IProps {
 
 const MOVIE_QUERY_KEY = "movie";
 
-const MovieDetail: React.FC<IProps> = ({ open, onClose, id }) => {
-  const { data: movie, isLoading } = useQuery<IMovieDetailRes>(
+function MovieDetail({ open, onClose, id }: IProps) {
+  const { data: movie, isFetching } = useQuery<IMovieDetailRes>(
     MOVIE_QUERY_KEY,
     () => getData(`movie/${id}`),
     {
@@ -38,7 +38,7 @@ const MovieDetail: React.FC<IProps> = ({ open, onClose, id }) => {
   return (
     <ModalPaper open={open} onClose={onClose}>
       <MovieContainer>
-        {isLoading ? (
+        {isFetching ? (
           <CircularProgress color="secondary" data-testid="loadingCircle" />
         ) : (
           <div>
@@ -60,6 +60,6 @@ const MovieDetail: React.FC<IProps> = ({ open, onClose, id }) => {
       </MovieContainer>
     </ModalPaper>
   );
-};
+}
 
 export default MovieDetail;

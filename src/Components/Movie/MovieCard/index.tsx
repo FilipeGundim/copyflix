@@ -7,12 +7,10 @@ interface IProps {
   onClick: () => void;
 }
 
-function MovieCard({ image, onClick }: IProps) {
-  return (
-    <Container item onClick={onClick} data-testid="MovieCard">
-      <MovieImg src={imageBaseUrl + image} loading="lazy" width="100px" />
-    </Container>
-  );
-}
+const MovieCard = ({ image, onClick }: IProps) => (
+  <Container item onClick={onClick} data-testid="MovieCard">
+    <MovieImg src={imageBaseUrl + image} loading="lazy" width="100px" />
+  </Container>
+);
 
 export default memo(MovieCard);

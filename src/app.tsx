@@ -1,5 +1,5 @@
 import Routes from "./Routes";
 
-export default function App() {
-  return <Routes />;
-}
+const App = () => <Routes />;
+
+export default App;

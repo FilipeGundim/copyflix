@@ -25,10 +25,13 @@ function Categorie() {
   const title = query.get("title") as string | undefined;
 
   const filter = `&with_genres=${id}`;
+  const fetchCategories = useCallback(() => {
+    return getData(`${movieUrl}`, filter);
+  }, [filter]);
 
   const { data: categorieList, isFetching } = useQuery<ISpotlightRes>(
     [MOVIE_CATEGORIE_QUERY_KEY, id, title],
-    () => getData(`${movieUrl}`, filter),
+    fetchCategories,
     { retry: false, enabled: Boolean(id) }
   );
 

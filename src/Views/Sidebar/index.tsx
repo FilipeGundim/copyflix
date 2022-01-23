@@ -12,11 +12,12 @@ interface IProps {
 }
 
 const GENRES_QUERY_KEY = "genres";
+const fetchGenres = () => getData(categorieListUrl);
 
 function Sidebar({ open, toggleDrawer }: IProps) {
   const { data: categories, isLoading } = useQuery<ICategorieRes>(
     GENRES_QUERY_KEY,
-    () => getData(categorieListUrl)
+    fetchGenres
   );
 
   const renderCategorie = useCallback(
