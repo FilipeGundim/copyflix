@@ -4,11 +4,13 @@ interface IProps {
   image: string;
 }
 
+const injectImage = ({ image }: IProps) => `url(${image})`;
+
 export const SpotlightContainer = styled.div<IProps>`
   height: 100vh;
   background-position: center;
   background-size: cover;
-  background-color: black;
+  background-color: ${({ theme }) => theme.bg};
   background-repeat: no-repeat;
   background-image: radial-gradient(
       circle,
@@ -16,7 +18,7 @@ export const SpotlightContainer = styled.div<IProps>`
       rgb(20, 20, 20) 100%,
       rgba(20, 20, 20, 1) 100%
     ),
-    ${(props) => `url(${props.image})`};
+    ${injectImage};
 `;
 
 export const Title = styled.div`

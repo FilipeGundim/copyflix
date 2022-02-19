@@ -5,7 +5,7 @@ export const NavBarContainer = styled(Grid)`
   height: 5vh;
   padding: 0.5rem;
   background-color: trasnparent !important;
-  position: sticky;
+  position: absolute;
   top: 0;
   left: 0;
 `;

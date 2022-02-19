@@ -4,17 +4,24 @@ import App from "./app";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { ThemeProvider } from "styled-components";
 
 const queryClient = new QueryClient();
 
-const NODE_MOUNT = document.getElementById("root");
+const theme = {
+  bg: "black",
+};
+
+const MOUNT_NODE = document.getElementById("root");
 
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>
-    <App />
-    <ReactQueryDevtools initialIsOpen={false} />
+    <ThemeProvider theme={theme}>
+      <App />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </ThemeProvider>
   </QueryClientProvider>,
-  NODE_MOUNT
+  MOUNT_NODE
 );
 
 // If you want to start measuring performance in your app, pass a function

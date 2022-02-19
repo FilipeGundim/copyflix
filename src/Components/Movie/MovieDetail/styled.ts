@@ -29,7 +29,7 @@ export const MovieContainer = styled.div`
   color: #ffffff;
   font-weight: bold;
   font-size: 3vh;
-  background-color: black;
+  background-color: ${({ theme }) => theme.bg};
   min-height: 50vh;
   display: flex;
   align-items: center;
@@ -46,11 +46,13 @@ export const MovieBonus = styled.div`
   color: greenyellow;
 `;
 
+const injectImage = ({ imagem }: IProps) => `url(${imagem})`;
+
 export const Img = styled.div<IProps>`
-  background-image: ${(props) => `url(${props.imagem})`};
+  background-image: ${injectImage};
   background-position: center;
   background-size: cover;
-  background-color: black;
+  background-color: ${({ theme }) => theme.bg};
   background-repeat: no-repeat;
   height: 300px;
   width: 100%;
