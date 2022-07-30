@@ -14,7 +14,7 @@ function Spotlight() {
 
   const spotlight = data?.results[Math.floor(Math.random() * 5)];
 
-  const imageUrl = imageBaseUrl + spotlight?.backdrop_path;
+  const imageUrl = `${imageBaseUrl}${spotlight?.backdrop_path}`;
 
   return (
     <SpotlightContainer image={imageUrl}>

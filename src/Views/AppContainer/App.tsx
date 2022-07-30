@@ -18,7 +18,7 @@ function AppRouteContainer({ children }: IProps) {
 
   return (
     <AppContainer>
-      <NavBar handleDrawer={handleDrawer} />
+      <NavBar onClick={handleDrawer} />
       <Sidebar open={openDrawer} toggleDrawer={closeDrawer} />
       {children}
     </AppContainer>

@@ -3,16 +3,12 @@ import { NavBarContainer } from "./styled";
 import React, { memo } from "react";
 
 interface IProps {
-  handleDrawer: () => void;
+  onClick: () => void;
 }
 
-const NavBar = ({ handleDrawer }: IProps) => (
+const NavBar = ({ onClick }: IProps) => (
   <NavBarContainer container justify="space-between" alignItems="center">
-    <MenuIcon
-      onClick={handleDrawer}
-      htmlColor="#ffffff"
-      data-testid="NavBarMenu"
-    />
+    <MenuIcon onClick={onClick} htmlColor="#ffffff" data-testid="NavBarMenu" />
   </NavBarContainer>
 );
 
