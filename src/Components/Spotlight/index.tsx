@@ -12,7 +12,7 @@ const fetchMovie = () => getData(movieUrl);
 function Spotlight() {
   const { data } = useQuery<ISpotlightRes>(SPOTLIGHT_QUERY_KEY, fetchMovie);
 
-  const spotlight = data?.results[Math.floor(Math.random() * 5)];
+  const spotlight = data && data.results[Math.floor(Math.random() * 5)];
 
   const imageUrl = `${imageBaseUrl}${spotlight?.backdrop_path}`;
 

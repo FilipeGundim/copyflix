@@ -42,10 +42,10 @@ function Sidebar({ open, toggleDrawer }: IProps) {
     >
       <HomeLink to="/home">Home</HomeLink>
       <HorizontalLine />
-      {isLoading ? (
+      {isLoading || !categories ? (
         <CircularProgress color="secondary" />
       ) : (
-        categories?.genres.map(renderCategorie)
+        categories.genres.map(renderCategorie)
       )}
     </LeftDrawer>
   );

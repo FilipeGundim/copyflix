@@ -27,34 +27,34 @@ function MovieDetail({ open, onClose, id }: IProps) {
     MOVIE_QUERY_KEY,
     () => getData(`movie/${id}`),
     {
-      enabled: Boolean(id),
+      enabled: !!id,
     }
   );
-
-  const formatedDate =
-    movie?.release_date &&
-    new Intl.DateTimeFormat("en-US").format(new Date(movie?.release_date));
 
   return (
     <ModalPaper open={open} onClose={onClose}>
       <MovieContainer>
-        {isFetching ? (
+        {isFetching || !movie ? (
           <CircularProgress color="secondary" data-testid="loadingCircle" />
         ) : (
           <div>
             <CloseIcon onClick={onClose} />
-            <Img imagem={imageBaseUrl + movie?.backdrop_path!}>
-              <MovieTitle>{movie?.title}</MovieTitle>
+            <Img imagem={imageBaseUrl + movie.backdrop_path!}>
+              <MovieTitle>{movie.title}</MovieTitle>
             </Img>
             <MovieBonus data-testid="MovieBonus">
-              Release date: {formatedDate}&nbsp;
+              Release date:&nbsp;
+              {new Intl.DateTimeFormat("en-US").format(
+                new Date(movie.release_date)
+              )}
+              &nbsp;
               <br />
-              Vote average: {movie?.vote_average}
-              <span data-testid="MovieBonusAdult">
-                {movie?.adult && " +18"}
-              </span>
+              Vote average: {movie.vote_average}
+              {movie.adult && (
+                <span data-testid="MovieBonusAdult">&nbsp;+18</span>
+              )}
             </MovieBonus>
-            <MovieOverview>{movie?.overview}</MovieOverview>
+            <MovieOverview>{movie.overview}</MovieOverview>
           </div>
         )}
       </MovieContainer>

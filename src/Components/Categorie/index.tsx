@@ -25,6 +25,7 @@ function Categorie() {
   const title = query.get("title") as string | undefined;
 
   const filter = `&with_genres=${id}`;
+
   const fetchCategories = useCallback(() => {
     return getData(`${movieUrl}`, filter);
   }, [filter]);
@@ -32,7 +33,7 @@ function Categorie() {
   const { data: categorieList, isFetching } = useQuery<ISpotlightRes>(
     [MOVIE_CATEGORIE_QUERY_KEY, id, title],
     fetchCategories,
-    { retry: false, enabled: Boolean(id) }
+    { retry: false, enabled: !!id }
   );
 
   const onClose = useCallback(() => setMovie(undefined), []);
@@ -42,7 +43,7 @@ function Categorie() {
     return <MovieCard key={id} image={poster_path} onClick={onMovieClick} />;
   }, []);
 
-  if (isFetching) {
+  if (isFetching || !categorieList) {
     return (
       <Container container justify="center" alignItems="center">
         <CircularProgress color="secondary" />
@@ -53,8 +54,8 @@ function Categorie() {
   return (
     <Container container justify="center" alignItems="center">
       <ContainerTitle>{title}</ContainerTitle>
-      {categorieList?.results?.map(renderMovie)}
-      <MovieDetail id={movie} onClose={onClose} open={Boolean(movie)} />
+      {categorieList.results.map(renderMovie)}
+      <MovieDetail id={movie} onClose={onClose} open={!!movie} />
     </Container>
   );
 }
