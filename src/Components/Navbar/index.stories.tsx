@@ -7,4 +7,4 @@ export default {
   component: NavBar,
 };
 
-export const Template = () => <NavBar handleDrawer={() => {}} />;
+export const Template = () => <NavBar onClick={() => {}} />;
