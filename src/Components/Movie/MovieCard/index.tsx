@@ -9,7 +9,7 @@ interface IProps {
 
 const MovieCard = ({ image, onClick }: IProps) => (
   <Container item onClick={onClick} data-testid="MovieCard">
-    <MovieImg src={imageBaseUrl + image} loading="lazy" width="100px" />
+    <MovieImg src={imageBaseUrl + image} loading="lazy" />
   </Container>
 );
 
